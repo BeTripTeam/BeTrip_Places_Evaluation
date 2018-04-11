@@ -3,6 +3,9 @@ from numpy import array
 
 
 class Evaluator:
+    def __init__(self):
+        self.sentiment_analyzer = None
+        
     def evaluate_place(self, place: Place):
         photo_score = self.evaluate_photo(place.photos)
         tips_score  = self.evaluate_tips(place.tips)
@@ -13,3 +16,6 @@ class Evaluator:
 
     def evaluate_tips(self, tips):
         return array([tip.mark for tip in tips]).mean()
+    
+    def sentiment_score(self, place):
+        pass
