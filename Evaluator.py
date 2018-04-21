@@ -1,21 +1,14 @@
+from evluation.PhotoEvaluation import PhotoEvaluator
+from evluation.TipEvaluator import TipEvaluator
 from models.Place import Place
-from numpy import array
 
 
 class Evaluator:
     def __init__(self):
-        self.sentiment_analyzer = None
+        self.photo_eval = PhotoEvaluator()
+        self.tip_eval = TipEvaluator()
         
     def evaluate_place(self, place: Place):
-        photo_score = self.evaluate_photo(place.photos)
-        tips_score  = self.evaluate_tips(place.tips)
-        return photo_score + tips_score
-
-    def evaluate_photo(self, photos):
-        return array([photo.mark for photo in photos]).mean()
-
-    def evaluate_tips(self, tips):
-        return array([tip.mark for tip in tips]).mean()
-    
-    def sentiment_score(self, place):
-        pass
+        photo_score = self.photo_eval.evaluate_photos(place.photos)
+        tips_score  = self.tip_eval.evaluate_tips(place.tips)
+        return ((photo_score + tips_score) * 0.6 + 0.4) * place.rating

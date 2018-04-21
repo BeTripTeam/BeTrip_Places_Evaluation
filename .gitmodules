@@ -1,0 +1,6 @@
+[submodule "Text_Sentiment"]
+	path = Text_Sentiment
+	url = https://github.com/BeTripTeam/Text_Sentiment
+[submodule "Images_Beauty"]
+	path = Images_Beauty
+	url = https://github.com/BeTripTeam/Images_Beauty

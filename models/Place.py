@@ -8,6 +8,7 @@ class Place:
         self.name   = ''
         self.tips   = []
         self.photos = []
+        self.rating = 0
         # Category
         self._category_name = ""
         self._category = -2
@@ -23,7 +24,11 @@ class Place:
         self.central_point = central_point
         self.geo_points = points
     
-    def set_place_info(self, name, tips, photos):
+    def __repr__(self):
+        return f"{self.name}\n{self.rating}"
+        
+    def set_place_info(self, name, rating, tips, photos):
+        self.rating = rating
         self.name = name
         self.tips = tips
         self.photos = photos
